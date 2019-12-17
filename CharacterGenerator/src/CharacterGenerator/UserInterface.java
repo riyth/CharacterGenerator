@@ -1,7 +1,13 @@
 package CharacterGenerator;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.*;
+
+
 
 public class UserInterface extends JFrame{
 
@@ -21,9 +27,9 @@ public class UserInterface extends JFrame{
 		
 		textArea = new JTextArea();
 		textArea.setEditable(false);
-		textArea.setText("Test123");
-		
+				
 		generateButton = new JButton("Generate Character");
+		generateButton.addActionListener(new UserInterface.generateButtonListener());
 		
 		
 		
@@ -40,6 +46,69 @@ public class UserInterface extends JFrame{
 	    setLocationRelativeTo(null);
 	    setVisible(true);
 	}
+	
+	private class generateButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+           
+        	String button = e.getActionCommand();
+        	
+        	
+        		 try {
+     				db = new Database();
+     				
+     				String opening = "You are a ";
+    				String alignment = db.getAlignment();
+    				String race = db.getRace();
+    				String classX = db.getClassX();
+    				String subclass = db.getSubClass(classX);
+    				String background = db.getBackground();
+    				String middle = null;
+    				
+    				switch(classX) {
+    				case "Barbarian" :  middle = "You have started walking down the ";
+    				break;
+    				case "Bard" :       middle = "You are associated with the ";
+    				break;
+    				case "Cleric" :     middle = "Your deity grants you power from the ";
+    				break;
+    				case "Druid" :      middle = "You are a member of the ";
+    				break;
+    				case "Fighter" :    middle = "You are training to become a ";
+    				break;
+    				case "Monk" :       middle = "You training at the monastery was to master the ";
+    				break;
+    				case "Paladin" :    middle = "You have sworn an ";
+    				break;
+    				case "Ranger" :     middle = "You specialize as a ";
+    				break;
+    				case "Rogue" :      middle = "Your are a trained ";
+    				break;
+    				case "Sorcerer" :   middle = "You power comes from ";
+    				break;
+    				case "Warlock" :    middle = "To gain the power you saught, you brokered a deal with ";
+    				break;
+    				case "Wizard" :     middle = "You have spent some time studying at the ";
+    				break;
+    							}
+    				textArea.setText(opening + alignment + ' ' + race + ' ' + classX + ". " + "\n" + middle + subclass + ".");
+        		 } catch (SQLException a) {
+     				// TODO Auto-generated catch block
+     				a.printStackTrace();
+     			}
+        		
+        	
+        	
+        	
+        	
+        	
+        	
+            
+            
+			
+        }
+        
+        }
+    
 	
 	
 	 public static void main(String args[]) {

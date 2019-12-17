@@ -20,41 +20,14 @@ public class Database {
 	
        
         
-    /**
-	 * Database Main
-	 */
-	@SuppressWarnings("unused")
-	public static void main(String[] args) 
-	{
-		
-		try
-		{
-			// Invoke the Database constructor, passing in User Name and Password.
-			Database players = new Database();
-				
-			
-			//
-		}
-		catch (SQLException exSQL)
-		{
-		    System.out.println("main SQLException: " + exSQL.getMessage());
-		    System.out.println("main SQLState: " + exSQL.getSQLState());
-		    System.out.println("main VendorError: " + exSQL.getErrorCode());
-		    exSQL.printStackTrace();
-		}
-	} 
-	
-	/**
-	 * Constructor for Class Database
-	 * @param String userName for connecting to Database schema
-	 * @param String passWord for connecting to Database schema
-	 */
+ 	
+
 	public Database() throws SQLException
 	{		
-		// Go create a connection to my "players" database.
-		// "conn" is a data member of JDBC type Connection.
-		// See Database::getConnection method below.
-		conn = DriverManager.getConnection("jdbc:sqlite:ClassGenerator.db");
+	
+		//System.out.println("PreConnection");
+		conn = DriverManager.getConnection("jdbc:sqlite:C:/SQlite/ClassGenerator.db");
+		//System.out.println("PostConnection");
 		if (conn == null)
 		{
 			System.out.println("getConnection failed.");
@@ -68,7 +41,7 @@ public class Database {
 	
 	public String getRace() throws SQLException {
 		
-		String getQuery = "select race from race order random() limit 1";
+		String getQuery = "select race from race ORDER BY RANDOM() limit 1;";
 		stmt = conn.prepareStatement(getQuery);
 		
 		ResultSet rs = stmt.executeQuery();
@@ -89,7 +62,7 @@ public class Database {
 	
 	public String getClassX() throws SQLException {
 		
-		String getQuery = "select class from class order random() limit 1";
+		String getQuery = "select class from class ORDER BY RANDOM() limit 1;";
 		stmt = conn.prepareStatement(getQuery);
 		
 		ResultSet rs = stmt.executeQuery();
@@ -109,7 +82,7 @@ public class Database {
 	
 	public String getSubClass(String classX) throws SQLException {
 		
-		String getQuery = "select subclass from class where class = '" + classX + "' order random() limit 1";
+		String getQuery = "select RTRIM(subclass) from class where class = '" + classX + "' ORDER BY RANDOM() limit 1;";
 		stmt = conn.prepareStatement(getQuery);
 		
 		ResultSet rs = stmt.executeQuery();
@@ -129,7 +102,7 @@ public class Database {
 	
 public String getBackground() throws SQLException {
 		
-		String getQuery = "select Background from Background where Background is not null order random() limit 1";
+		String getQuery = "select Background from Background where Background is not null ORDER BY RANDOM() limit 1;";
 		stmt = conn.prepareStatement(getQuery);
 		
 		ResultSet rs = stmt.executeQuery();
@@ -149,7 +122,7 @@ public String getBackground() throws SQLException {
 
 public String getAlignment() throws SQLException {
 	
-	String getQuery = "select Alignment from Alignment where Alignment is not null order random() limit 1";
+	String getQuery = "select Alignment from Alignment where Alignment is not null ORDER BY RANDOM() limit 1;";
 	stmt = conn.prepareStatement(getQuery);
 	
 	ResultSet rs = stmt.executeQuery();
