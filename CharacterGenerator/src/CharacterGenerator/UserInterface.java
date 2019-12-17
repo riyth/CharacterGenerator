@@ -11,6 +11,10 @@ import javax.swing.*;
 
 public class UserInterface extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel mainPanel;
 	JButton generateButton;
 	JTextArea textArea;
@@ -50,10 +54,7 @@ public class UserInterface extends JFrame{
 	private class generateButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
            
-        	String button = e.getActionCommand();
-        	
-        	
-        		 try {
+        	try {
      				db = new Database();
      				
      				String opening = "You are a ";
@@ -90,7 +91,7 @@ public class UserInterface extends JFrame{
     				case "Wizard" :     middle = "You have spent some time studying at the ";
     				break;
     							}
-    				textArea.setText(opening + alignment + ' ' + race + ' ' + classX + ". " + "\n" + middle + subclass + ".");
+    				textArea.setText(opening + alignment + ' ' + race + ' ' + classX + ". " + "\n" + middle + subclass + ".\nYou come from a " + background + "background." );
         		 } catch (SQLException a) {
      				// TODO Auto-generated catch block
      				a.printStackTrace();

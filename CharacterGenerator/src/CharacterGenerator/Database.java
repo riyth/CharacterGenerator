@@ -2,7 +2,6 @@ package CharacterGenerator;
 
 
 import java.lang.System;
-import java.util.Properties;
 import java.sql.*;
 
 
