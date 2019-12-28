@@ -25,7 +25,7 @@ public class Database {
 	{		
 	
 		//System.out.println("PreConnection");
-		conn = DriverManager.getConnection("jdbc:sqlite:C:/SQlite/ClassGenerator.db");
+		conn = DriverManager.getConnection("jdbc:sqlite::resource:CharacterGenerator/ClassGenerator.db");
 		//System.out.println("PostConnection");
 		if (conn == null)
 		{
