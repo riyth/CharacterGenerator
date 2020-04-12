@@ -66,6 +66,8 @@ public class UserInterface extends JFrame{
     				String middle = null;
     				
     				switch(classX) {
+    				case "Artificer" :     middle = "You specialize as a ";
+    				break;
     				case "Barbarian" :  middle = "You have started walking down the ";
     				break;
     				case "Bard" :       middle = "You are associated with the ";
@@ -98,8 +100,7 @@ public class UserInterface extends JFrame{
      			}
         		
         	
-        	
-        	
+        	   	
         	
         	
         	
