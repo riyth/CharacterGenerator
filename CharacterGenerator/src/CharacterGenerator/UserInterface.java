@@ -18,6 +18,9 @@ public class UserInterface extends JFrame{
 	JPanel mainPanel;
 	JButton generateButton;
 	JTextArea textArea;
+	JMenu menu;
+	JMenuBar menuBar;
+	JMenuItem source, alignment;
 	
 	String guiTitle = "D&D Character Generator";
 	Database db = null;
@@ -27,7 +30,12 @@ public class UserInterface extends JFrame{
 	public UserInterface() {
 		
 		Container pane = getContentPane();
-		mainPanel = new JPanel( new GridLayout(2,1));
+		mainPanel = new JPanel( new GridLayout(3,1));
+		
+		menuBar = new JMenuBar();
+		menu = new JMenu("File");
+		source = new JMenuItem("Owned Sources");
+		alignment = new JMenuItem("Alignments");
 		
 		textArea = new JTextArea();
 		textArea.setEditable(false);
@@ -35,7 +43,11 @@ public class UserInterface extends JFrame{
 		generateButton = new JButton("Generate Character");
 		generateButton.addActionListener(new UserInterface.generateButtonListener());
 		
-		
+		menu.add(source);
+		menu.add(alignment);
+		menuBar.add(menu);
+		mainPanel.add(menu);
+		setJMenuBar(menuBar);
 		
 		mainPanel.add(textArea);
 		mainPanel.add(generateButton);
@@ -88,7 +100,7 @@ public class UserInterface extends JFrame{
     				break;
     				case "Sorcerer" :   middle = "You power comes from ";
     				break;
-    				case "Warlock" :    middle = "To gain the power you saught, you brokered a deal with ";
+    				case "Warlock" :    middle = "To gain the power you sought, you brokered a deal with ";
     				break;
     				case "Wizard" :     middle = "You have spent some time studying at the ";
     				break;

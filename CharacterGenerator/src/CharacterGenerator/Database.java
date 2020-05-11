@@ -15,17 +15,20 @@ public class Database {
 		PreparedStatement stmt2 = null;
 		PreparedStatement stmt3 = null;
 		PreparedStatement stmt4 = null;
+		String alignmentIn = null;
         
 	
        
         
  	
 
-	public Database() throws SQLException
+	public Database(String source, String alignment) throws SQLException
 	{		
 	
 		//System.out.println("PreConnection");
 		conn = DriverManager.getConnection("jdbc:sqlite::resource:CharacterGenerator/ClassGenerator.db");
+		alignmentIn = alignment;
+		System.out.println(alignmentIn);
 		//System.out.println("PostConnection");
 		if (conn == null)
 		{
@@ -121,19 +124,19 @@ public String getBackground() throws SQLException {
 
 public String getAlignment() throws SQLException {
 	
-	String getQuery = "select Alignment from Alignment where Alignment is not null ORDER BY RANDOM() limit 1;";
+	String getQuery = "select Alignment from Alignment where Alignment is not null AND Alignment in (" + alignmentIn + ")  ORDER BY RANDOM() limit 1;";
 	stmt = conn.prepareStatement(getQuery);
 	
+	System.out.println(alignmentIn);
 	ResultSet rs = stmt.executeQuery();
 	
 	String alignment = null;
 	
 	
 	
-	
 	while (rs.next()){
 		alignment = rs.getString(1);
-		
+		System.out.println(alignment);
 					
 	}
 	return alignment;
