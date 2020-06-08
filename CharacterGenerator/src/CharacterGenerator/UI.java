@@ -56,7 +56,7 @@ public class UI {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JMenu mnSource = new JMenu("Source");
+		JMenu mnSource = new JMenu("Owned Source Material");
 		mnFile.add(mnSource);
 		
 		JCheckBox chckbxPlayersHandbook = new JCheckBox("Player's Handbook",true);
@@ -65,23 +65,29 @@ public class UI {
 		JCheckBox chckbxDungeonMastersGuide = new JCheckBox("Dungeon Master's Guide",true);
 		mnSource.add(chckbxDungeonMastersGuide);
 		
-		JCheckBox chckbxEberronRisingFrom = new JCheckBox("Eberron: Rising from the Last War",true);
+		JCheckBox chckbxEberronRisingFrom = new JCheckBox("Eberron: Rising from the Last War",false);
 		mnSource.add(chckbxEberronRisingFrom);
 		
-		JCheckBox chckbxExplorersGuideTo = new JCheckBox("Explorer's Guide to Wildemount",true);
+		JCheckBox chckbxExplorersGuideTo = new JCheckBox("Explorer's Guide to Wildemount",false);
 		mnSource.add(chckbxExplorersGuideTo);
 		
-		JCheckBox chckbxGuildmasterGuideTo = new JCheckBox("Guildmaster' Guide to Eberron",true);
+		JCheckBox chckbxGuildmasterGuideTo = new JCheckBox("Guildmaster' Guide to Eberron",false);
 		mnSource.add(chckbxGuildmasterGuideTo);
 		
-		JCheckBox chckbxSwordCoastAdventurers = new JCheckBox("Sword Coast Adventurer's Guide",true);
+		JCheckBox chckbxSwordCoastAdventurers = new JCheckBox("Sword Coast Adventurer's Guide",false);
 		mnSource.add(chckbxSwordCoastAdventurers);
 		
-		JCheckBox chckbxWayfindersGuideTo = new JCheckBox("Wayfinder's Guide to Eberron",true);
+		JCheckBox chckbxWayfindersGuideTo = new JCheckBox("Wayfinder's Guide to Eberron",false);
 		mnSource.add(chckbxWayfindersGuideTo);
 		
-		JCheckBox chckbxXanatharsGuideTo = new JCheckBox("Xanathar's Guide to Everything",true);
+		JCheckBox chckbxXanatharsGuideTo = new JCheckBox("Xanathar's Guide to Everything",false);
 		mnSource.add(chckbxXanatharsGuideTo);
+		
+		JCheckBox chckbxCurseofStrahd = new JCheckBox("Curse of Strahd",false);
+		mnSource.add(chckbxCurseofStrahd);
+		
+		JCheckBox chckbxExplorersGuideWildmount = new JCheckBox("Explorer's Guide to Wildemount",false);
+		mnSource.add(chckbxExplorersGuideWildmount);
 		
 		JMenu mnAlignment = new JMenu("Alignment");
 		mnFile.add(mnAlignment);
@@ -110,7 +116,7 @@ public class UI {
 		frame.getContentPane().setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(60, 44, 321, 102);
+		textArea.setBounds(10, 11, 414, 135);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnGenerateCharacter = new JButton("Generate");

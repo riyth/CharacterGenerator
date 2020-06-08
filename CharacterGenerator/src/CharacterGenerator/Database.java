@@ -141,6 +141,8 @@ public String getAlignment() throws SQLException {
 	}
 	return alignment;
 }
+
+
 		
 	}
 	
